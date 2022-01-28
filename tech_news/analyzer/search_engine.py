@@ -6,7 +6,7 @@ def search_by_title(title):
     search = db.news.find({
         "title": {
             "$regex": title,
-            "$option": "i"
+            "$options": "i"
         }
     })
     list_news = []
