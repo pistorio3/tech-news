@@ -4,6 +4,7 @@ import time
 
 # Requisito 1
 def fetch(url):
+    time.sleep(1)
     try:
         response = requests.get(url, timeout=3)
         response.raise_for_status()
@@ -11,8 +12,7 @@ def fetch(url):
         return None
     except requests.Timeout:
         return None
-    time.sleep(1)
-    return response
+    return response.text
 
 
 # Requisito 2
