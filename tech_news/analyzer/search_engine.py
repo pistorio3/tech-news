@@ -33,7 +33,8 @@ def search_by_date(date):
     list_news = []
     for element in search:
         list_news.append((
-            element["title"], element["url"]
+            element["title"],
+            element["url"]
         ))
     return list_news
 
@@ -42,17 +43,31 @@ def search_by_date(date):
 def search_by_source(source):
     search = db.news.find({
         "sources": {
-            "$regex": source, "$options": "i"
+            "$regex": source,
+            "$options": "i"
         }
     })
     list_news = []
     for element in search:
         list_news.append((
-            element["title"], element["url"]
+            element["title"],
+            element["url"]
         ))
     return list_news
 
 
 # Requisito 9
 def search_by_category(category):
-    """Seu código deve vir aqui"""
+    search = db.news.find({
+        "categories": {
+            "$regex": category,
+            "$options": "i"
+        }
+    })
+    list_news = []
+    for element in search:
+        list_news.append((
+            element["title"],
+            element["url"]
+        ))
+    return list_news
