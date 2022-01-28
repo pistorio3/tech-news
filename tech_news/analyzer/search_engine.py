@@ -22,9 +22,9 @@ def search_by_title(title):
 # Requisito 7
 def search_by_date(date):
     try:
-        datetime.strptime(date, "%Y-%m-%dd")
+        datetime.strptime(date, "%Y-%m-%d")
     except ValueError:
-        raise ValueError("Data invalida")
+        raise ValueError("Data inválida")
     search = db.news.find({
         "timestamp": {
             "$regex": date
