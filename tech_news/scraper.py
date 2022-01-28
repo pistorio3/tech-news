@@ -73,7 +73,9 @@ def scrape_noticia(html_content):
     title = selector.css("#js-article-title::text").get()
     date = selector.css("#js-article-date::attr(datetime)").get()
     summary = "".join(
-        selector.css(".tec--article__body > p:nth-child(1) ::text").getall()
+        selector.css(
+            ".tec--article__body > p:nth-child(1) ::text"
+        ).getall()
     )
     return {
         "url": url,
