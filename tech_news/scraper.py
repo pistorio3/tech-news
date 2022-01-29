@@ -41,9 +41,7 @@ def get_writer(selector):
 # Função auxiliar req4
 def get_shares(selector):
     try:
-        shares_count = (
-            selector.css('.tec--toolbar__item::text').get().strip()
-        )
+        shares_count = selector.css(".tec--toolbar__item::text").get().strip()
         return int(shares_count[0])
     except AttributeError:
         return 0
@@ -51,19 +49,19 @@ def get_shares(selector):
 
 # Função auxiliar req4
 def get_comments(selector):
-    comments_count = selector.css('#js-comments-btn::attr(data-count)').get()
+    comments_count = selector.css("#js-comments-btn::attr(data-count)").get()
     return int(comments_count)
 
 
 # Função auxiliar req4
 def get_sources(selector):
-    sources = selector.css('.z--mb-16 .tec--badge::text').getall()
+    sources = selector.css(".z--mb-16 .tec--badge::text").getall()
     return [source.strip() for source in sources]
 
 
 # Função auxiliar req4
 def get_categories(selector):
-    categories = selector.css('#js-categories > a::text').getall()
+    categories = selector.css("#js-categories > a::text").getall()
     return [category.strip() for category in categories]
 
 
@@ -74,9 +72,7 @@ def scrape_noticia(html_content):
     title = selector.css("#js-article-title::text").get()
     date = selector.css("#js-article-date::attr(datetime)").get()
     summary = "".join(
-        selector.css(
-            ".tec--article__body > p:nth-child(1) ::text"
-        ).getall()
+        selector.css(".tec--article__body > p:nth-child(1) ::text").getall()
     )
     return {
         "url": url,
