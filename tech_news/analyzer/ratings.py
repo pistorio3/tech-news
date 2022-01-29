@@ -7,7 +7,8 @@ def top_5_news():
     news_top_five = []
     for element in news:
         element["soma"] = element["shares_count"] + element["comments_count"]
-    news.sort(key=lambda element: element["soma"])
+    # https://docs.python.org/3/howto/sorting.html
+    news.sort(key=lambda element: element["soma"], reverse=True)
     top_five = news[:5]
     for element in top_five:
         news_top_five.append((element["title"], element["url"]))
