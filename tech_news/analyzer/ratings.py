@@ -29,4 +29,4 @@ def top_5_categories():
     )
     for category in categories_list:
         categories_top_five.append(category["_id"])
-    return categories_top_five
+    return categories_top_five[:5]
