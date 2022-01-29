@@ -1,4 +1,5 @@
 from tech_news.database import find_news
+from tech_news.database import db
 
 
 # Requisito 10
@@ -17,4 +18,15 @@ def top_5_news():
 
 # Requisito 11
 def top_5_categories():
-    """Seu código deve vir aqui"""
+    categories_top_five = []
+    # https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#examples
+    categories_list = db.news.aggregate(
+        [
+            {"$unwind": "$categories"},
+            {"$group": {"_id": "$categories", "total": {"$sum": 1}}},
+            {"$sort": {"_id": 1}},
+        ]
+    )
+    for category in categories_list:
+        categories_top_five.append(category["_id"])
+    return categories_top_five
