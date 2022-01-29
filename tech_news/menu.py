@@ -21,8 +21,8 @@ def analyzer_menu():
         3: "Digite a fonte:",
         4: "Digite a categoria:",
     }
-    for option in options:
-        print(option)
+    for element in options:
+        print(element)
     try:
         option = int(input('Digite a opção:'))
         print(messages[option])
